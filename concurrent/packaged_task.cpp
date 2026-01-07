@@ -105,30 +105,30 @@ struct Foo {
     }
 };
 
-int main() {
-    Scheduler scheduler;
-
-    auto fut1 = scheduler.ScheduleTask(PrintNum, 10);
-    auto fut2 = scheduler.ScheduleTask([] {
-        std::cout << "lambda\n";
-        return 20;
-    });
-    auto fut3 = scheduler.ScheduleTaskAfter(
-        std::chrono::seconds(3), PrintSum<int, double>, 10, 3.14);
-
-    Foo f;
-    f.a = 99;
-
-    auto fut4 = scheduler.ScheduleTaskAfter(
-        std::chrono::seconds(1), &Foo::PrintMem, &f
-    );
-
-    std::cout << fut1.get() << std::endl;
-    std::cout << fut2.get() << std::endl;
-    std::cout << fut3.get() << std::endl;
-    std::cout << fut4.get() << std::endl;
-
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-
-    return 0;
-}
+// int main() {
+//     Scheduler scheduler;
+//
+//     auto fut1 = scheduler.ScheduleTask(PrintNum, 10);
+//     auto fut2 = scheduler.ScheduleTask([] {
+//         std::cout << "lambda\n";
+//         return 20;
+//     });
+//     auto fut3 = scheduler.ScheduleTaskAfter(
+//         std::chrono::seconds(3), PrintSum<int, double>, 10, 3.14);
+//
+//     Foo f;
+//     f.a = 99;
+//
+//     auto fut4 = scheduler.ScheduleTaskAfter(
+//         std::chrono::seconds(1), &Foo::PrintMem, &f
+//     );
+//
+//     std::cout << fut1.get() << std::endl;
+//     std::cout << fut2.get() << std::endl;
+//     std::cout << fut3.get() << std::endl;
+//     std::cout << fut4.get() << std::endl;
+//
+//     std::this_thread::sleep_for(std::chrono::seconds(5));
+//
+//     return 0;
+// }
